@@ -1,0 +1,18 @@
+<table>
+  <thead>
+  <tr>
+    <th>Предмет</th>
+    <th>Цена</th>
+    <th>Куплено</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (item of items; track item.purchase) {
+      <tr>
+        <td>{{item.purchase}}</td>
+        <td>{{item.price}}</td>
+        <td><input type="checkbox" [(ngModel)]="item.done" /></td>
+      </tr>
+    }
+  </tbody>
+</table>`

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {Item} from "./models/Item";
+import {ItemTableComponent} from "./components/item-table/item-table.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ItemTableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -13,32 +15,14 @@ export class AppComponent {
   purchase : string = '';
   price : number = 0;
 
-  items : Item[] = [
-    new Item('Bread',15.6),
-    new Item('Meat',130.5),
-    new Item('Rice', 12.4)
-  ];
+  items : Item[] = [];
 
-  addItem(purchase : string, price : number) : void{
-    if(purchase === '' || purchase === null){
-      alert('You need write purchase name')
-      return;
-    }
-    this.items.push(new Item(purchase,price));
-    this.purchase = '';
-    this.price = 0;
+  addItem(purchase : string, price : number) : void {
+    console.log('purchase', purchase);
+    console.log('price', price);
+    this.items.push(new  Item(purchase, price));
   }
 }
 
 
-class Item {
-  purchase: string;
-  done : boolean;
-  price : number
 
-  constructor(purchase : string, price : number ) {
-    this.purchase = purchase;
-    this.price = price;
-    this.done = false;
-  }
-}
